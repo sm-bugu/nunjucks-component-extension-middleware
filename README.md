@@ -3,6 +3,12 @@ nunjucks-component-extension-middleware
 
 nunjucks-component-extension for express or connect
 
+## install
+
+```
+npm install nunjucks-component-extension-middleware --save
+```
+
 ## options
 
 1. viewPath: view path, this is required.
