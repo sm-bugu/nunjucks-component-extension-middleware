@@ -41,7 +41,7 @@ module.exports = function (viewPath, options) {
 	    var filePath = path.join(viewPath, url);
 
 	    // 说明是.html后缀
-	    if (url.indexOf('.html') === (url.length - 5)) {
+	    if (path.extname(url) === '.html') {
 
 	        render(filePath).then(function (str) {
 	            var buf = new Buffer(str);
