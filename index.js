@@ -40,6 +40,10 @@ module.exports = function (viewPath, options) {
 	    var url = req.url;
 	    var filePath = path.join(viewPath, url);
 
+	    // 兼容 /
+	    if (path.extname(url) == '') {
+	    	url = path.join(url, 'index.html')
+	    }
 	    // 说明是.html后缀
 	    if (path.extname(url) === '.html') {
 
