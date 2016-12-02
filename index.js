@@ -56,8 +56,9 @@ module.exports = function (viewPath, options) {
 	            res.end(buf);
 	        }).catch(function (e) {
 	            if (e) {
+	            	console.log(e.stack)
 	                res.writeHead(500, {'Content-Type': 'text/plain'});
-	                res.end(e);
+	                res.end(e.stack);
 	            } else {
 	                res.writeHead(404, {'Content-Type': 'text/plain'});
 	                res.end('404 error! File not found.');
