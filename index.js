@@ -31,19 +31,14 @@ module.exports = function (viewPath, options) {
 	}
 
 	var env = new nunjucks.configure(viewPath, extend({
-	    watch: true
+	    watch: true,
+	    noCache: true
 	}, options));
 
 	env.addExtension('ComponentExtension', nunjucksComponentExtension);
 
 	return function (req, res, next) {
 	    var url = req.url;
-
-	    // 兼容 /
-	    if (path.extname(url) == '') {
-	    	url = path.join(url, 'index.html')
-	    }
-
 	    var filePath = path.join(viewPath, url);
 
 	    // 说明是.html后缀
