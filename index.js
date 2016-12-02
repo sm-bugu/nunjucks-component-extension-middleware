@@ -38,12 +38,14 @@ module.exports = function (viewPath, options) {
 
 	return function (req, res, next) {
 	    var url = req.url;
-	    var filePath = path.join(viewPath, url);
 
 	    // 兼容 /
 	    if (path.extname(url) == '') {
 	    	url = path.join(url, 'index.html')
 	    }
+
+	    var filePath = path.join(viewPath, url);
+
 	    // 说明是.html后缀
 	    if (path.extname(url) === '.html') {
 
@@ -56,7 +58,7 @@ module.exports = function (viewPath, options) {
 	            res.end(buf);
 	        }).catch(function (e) {
 	            if (e) {
-	            	console.log(e.stack)
+	            	console.log(e.stack);
 	                res.writeHead(500, {'Content-Type': 'text/plain'});
 	                res.end(e.stack);
 	            } else {
